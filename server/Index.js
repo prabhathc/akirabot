@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 const { Client, Events, GatewayIntentBits } = discord;
-const { token } = process.env.DISCORD_BOT_TOKEN;
+const token = process.env.DISCORD_BOT_TOKEN;
 
 const PORT = 3000; 
 const app = express();
