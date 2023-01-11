@@ -2,8 +2,7 @@ import express from 'express'
 import discord from 'discord.js'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
-import apiRouter from './routes/index.js'
-import bodyParser from 'body-parser'
+import apiRouter from './api/routes/index.js'
 
 dotenv.config();
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import url from 'url';
 
+//testing without the need of front-end
 let accessToken = {}
 
 //Get Authentication Token from discord.
