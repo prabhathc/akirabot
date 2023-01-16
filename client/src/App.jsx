@@ -6,10 +6,10 @@ import './index.css';
 
 function App() {
   return (
-    <div className="isolate bg-white">
+    <div className="isolate bg-gradient-to-b from-pillred/20 to-pillwhite">
       <Nav />
       <Routes>
-        {/* <Route exact path="/" element={<Home />} /> */}
+        <Route exact path="/" element={<Home />} />
       </Routes>
     </div>
   );

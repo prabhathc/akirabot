@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import icon from '../assets/icon.png';
 
 export default function Nav() {
+  const url = 'https://discord.com/api/oauth2/authorize?client_id=1061118038402945094&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fredirect&response_type=code&scope=identify%20email%20guilds';
   return (
     <div>
       <div className="px-6 pt-6 lg:px-8">
@@ -15,10 +16,10 @@ export default function Nav() {
             </div>
             <div className="lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
               <a
-                href="https://discord.com/api/oauth2/authorize?client_id=1061525982927917146&permissions=292463606326&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=code&scope=bot%20identify%20guilds%20email"
-                className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-white bg-pillred shadow-sm ring-1 ring-pillred hover:ring-gray-900/20"
+                href={url}
+                className="inline-block rounded-lg bg-pillred/20 px-4 py-2 text-lg font-semibold leading-7 text-pillred shadow-sm ring-1 ring-pillred/20 hover:ring-pillred duration-300"
               >
-                Log in
+                Login
               </a>
             </div>
           </nav>

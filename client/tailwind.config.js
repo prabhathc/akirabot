@@ -2,10 +2,21 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx}'],
   theme: {
-    colors: {
-      pillred: '#EA6A6C',
+    extend: {
+      colors: {
+        pillred: '#EA6A6C',
+        pillwhite: '#FFFFFF',
+      },
+      keyframes: {
+        rotateText: {
+          '0%, 100%': { transform: 'rotate(360deg)' },
+          '100%, 0%': { transform: 'rotate(0deg)' },
+        },
+      },
+      rotate: {
+        360: '360deg',
+      },
     },
-    extend: {},
   },
   plugins: [],
 };
