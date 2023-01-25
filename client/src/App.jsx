@@ -2,17 +2,17 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 import './index.css';
 
-function App() {
+export default function App() {
   return (
-    <div className="isolate bg-gradient-to-b from-pillred/20 to-pillwhite">
+    <div className="isolate">
       <Nav />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
-
-export default App;
