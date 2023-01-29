@@ -28,6 +28,7 @@ const redirectToken = (async (req, res) => {
             });
 
             accessToken = response.data;
+            res.cookie('Token', `${accessToken.access_token}`, {maxAge: 360000}, {signed: true});
             res.redirect('/api/user')
         } catch (err){
             console.log(err)
