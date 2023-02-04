@@ -7,6 +7,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import AWS from 'aws-sdk'
 
 dotenv.config();
 
@@ -19,8 +20,11 @@ const app = express();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const __filename = fileURLToPath(import.meta.url)
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const awsConfig = new AWS.Config({
+    region: 'us-east-1'
+});
 
 client.once(Events.ClientReady, c => {
     console.log(`Ready! Logged in as ${c.user.tag}`);
@@ -29,7 +33,7 @@ client.once(Events.ClientReady, c => {
 client.login(token);
 
 app.use(express.urlencoded({extended:false}));
-app.use(helmet())
+app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 
@@ -41,9 +45,9 @@ app.use(cors({
 app.disable('x-powered-by');
 
 app.get("/" , async(req, res) => {
-    res.sendFile(path.join(__dirname, '../client/index.html'))
-})
+    res.sendFile(path.join(__dirname, '../client/index.html'));
+});
 
-app.use('/api', apiRouter)
+app.use('/api', apiRouter);
 
-app.listen(PORT, () => console.log(`App Listening at PORT ${PORT}`))
+app.listen(PORT, () => console.log(`App Listening at PORT ${PORT}`));
