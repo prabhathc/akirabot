@@ -14,8 +14,8 @@ export default function Home() {
       <main>
         <div className="mx-auto max-w-3xl px-6 py-24 relative h-screen">
                 <div className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl top-0">
-                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#EA6A6C" d="M42.5,-73.4C55.8,-65.9,67.9,-56,75.3,-43.4C82.7,-30.8,85.5,-15.4,86.5,0.6C87.5,16.6,86.7,33.1,80.1,47.1C73.4,61,60.9,72.4,46.6,79.1C32.2,85.8,16.1,88,-0.2,88.3C-16.5,88.7,-33.1,87.3,-46.1,79.8C-59.1,72.3,-68.6,58.7,-75.6,44.4C-82.6,30,-87.1,15,-87.7,-0.4C-88.4,-15.8,-85.2,-31.6,-77.3,-44.4C-69.5,-57.2,-56.9,-67.1,-43.3,-74.3C-29.6,-81.5,-14.8,-86.2,-0.1,-86C14.6,-85.8,29.2,-80.8,42.5,-73.4Z" transform="translate(100 100)" />
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="50" fill="#EA6A6C" />
                   </svg>
                 </div>
                 <div className="flex justify-center">
