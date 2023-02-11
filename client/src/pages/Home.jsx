@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../assets/logo.png';
-// import Tile from '../components/Tile';
 
 export default function Home() {
 
