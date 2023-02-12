@@ -25,12 +25,16 @@ export default function Learn() {
         },
       ]
     return (
-        <div className="relative px-6 lg:px-8 hidden">
-          <div className="mx-auto max-w-screen-xl pt-4 grid gap-4 grid-cols-1">
-            <div className="h-64 bg-blue-500"> text </div>
-            <div className="h-64 bg-blue-500"> img </div>
-            <div className="h-64 bg-blue-500"> text </div>
-            <div className="h-64 bg-blue-500"> img </div>
+        <div className="relative px-6 lg:px-8">
+          <div className="mx-auto max-w-screen-xl pt-4 grid gap-4 grid-cols-1 md:grid-cols-2 flex">
+            <div className="bg-pilllblue h-64 rounded-lg hover:bg-pillblue duration-100">
+              <div className="flex text-3xl font-bold tracking-tight text-pilldblue p-4">
+                hiii
+              </div>
+            </div>
+            <div className="bg-pillblue h-64 rounded-md"> img </div>
+            <div className="bg-pillblue h-64 rounded-md"> text </div>
+            <div className="bg-pillblue h-64 rounded-md"> img </div>
           </div>
         </div>
     )
