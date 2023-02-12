@@ -6,8 +6,8 @@ module.exports = {
       colors: {
         pillred: '#EA6A6C',
         pillwhite: '#FFFFFF',
-        pillblue: '#A9D2EF',
-        pilldblue: '#6290BC',
+        pillblue: '#CCE4F5',
+        pilldblue: '#88C0E7',
       },
       keyframes: {
         rotateText: {
@@ -17,6 +17,9 @@ module.exports = {
       },
       rotate: {
         360: '360deg',
+      },
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
       },
     },
   },

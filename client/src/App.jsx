@@ -7,7 +7,7 @@ import './index.css';
 
 export default function App() {
   return (
-    <div className="isolate">
+    <div className="isolate bg-pillred">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />

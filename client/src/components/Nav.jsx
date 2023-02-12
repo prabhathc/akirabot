@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import icon from '../assets/icon.png';
+import icon from '../assets/icon4.png';
 import { Link } from 'react-router-dom';
 
 export default function Nav() {
@@ -17,7 +17,7 @@ export default function Nav() {
             <div className="lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
               <a
                 href={url}
-                className="inline-block rounded-lg px-4 py-2 text-lg font-semibold leading-7 bg-pillblue/20 text-pilldblue  shadow-sm ring-1 ring-pillblue/20 hover:ring-pillblue duration-300"
+                className="inline-block rounded-lg px-4 py-2 text-lg font-semibold leading-7 bg-pillwhite/20 text-pillwhite  shadow-sm ring-1 ring-pillwhite/20 hover:ring-pillwhite duration-300"
               >
                 Login
               </a>
