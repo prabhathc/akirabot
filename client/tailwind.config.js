@@ -6,7 +6,8 @@ module.exports = {
       colors: {
         pillred: '#EA6A6C',
         pillwhite: '#FFFFFF',
-        pillthird: '#708B75',
+        pillblue: '#A9D2EF',
+        pilldblue: '#6290BC',
       },
       keyframes: {
         rotateText: {
