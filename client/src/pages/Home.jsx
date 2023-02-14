@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <main>
-        <div className="mx-auto max-w-3xl px-6 relative h-screen flex-col">
+        <div className="mx-auto max-w-3xl px-6 relative h-[calc(100vh-84px)] flex-col">
                 <div className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl invisible sm:visible">
                   {/* <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="75" cy="75" r="75" fill="#EA6A6C" fill-opacity="0.75" />
