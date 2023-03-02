@@ -7,6 +7,7 @@ module.exports = {
         pillred: '#EA6A6C',
         pillwhite: '#FFFFFF',
         pillblue: '#CCE4F5',
+        pillgreen: '#5E8C61',
         pilldblue: '#88C0E7',
       },
       keyframes: {

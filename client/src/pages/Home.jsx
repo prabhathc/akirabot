@@ -1,10 +1,8 @@
 import React from 'react';
 import logo from '../assets/logo11.png';
-import icon from '../assets/icon2.png';
-import text from '../assets/text.png'
 import Learn from '../components/Learn';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Home() {
 
@@ -13,7 +11,7 @@ export default function Home() {
   return (
     <div>
       <main>
-        <div className="mx-auto max-w-3xl px-6 relative h-[calc(100vh-84px)] flex-col">
+        <div className="mx-auto max-w-3xl px-6 h-[calc(100vh-84px)]">
                 <div className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl invisible sm:visible">
                   {/* <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="75" cy="75" r="75" fill="#EA6A6C" fill-opacity="0.75" />
@@ -36,8 +34,8 @@ export default function Home() {
                   Your one stop shop for endless music.
                 </h1>
                 <div className="mt-6 flex gap-x-4 sm:justify-center">
-                  <a
-                    href="#"
+                  <NavLink
+                    to="/admin"
                     className="inline-block rounded-lg bg-pillwhite/20 px-4 py-2 text-lg font-semibold leading-7 text-pillwhite shadow-sm ring-1 ring-pillwhite/20 hover:ring-pillwhite duration-300"
                   >
                     Get started
@@ -45,7 +43,7 @@ export default function Home() {
                     <span className="text-pillwhite" aria-hidden="true">
                       &rarr;
                     </span>
-                  </a>
+                  </NavLink>
                   <button onClick={() => learnMoreData.current.scrollIntoView({behavior: 'smooth'})} className="inline-block rounded-lg px-4 py-2 text-lg font-semibold leading-7 text-pillwhite ring-1 ring-pillwhite/20 hover:ring-pillwhite duration-300 cursor-pointer">
                     Learn more
                       {' '}
