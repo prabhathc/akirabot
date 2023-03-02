@@ -12,7 +12,7 @@ export default function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/" element={<Admin />} /> */}
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </div>
