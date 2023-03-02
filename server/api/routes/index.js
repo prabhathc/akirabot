@@ -9,4 +9,4 @@ router.get('/auth/refresh', authController.refreshToken);
 router.get('/user', authController.getUser);
 router.get('/user/guilds', authController.userGuild);
 
-export default router
+export default router;

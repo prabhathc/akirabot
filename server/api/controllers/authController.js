@@ -15,6 +15,7 @@ const secKey = Buffer.from([1, 4, 4, 5, 6, 7, 5, 3, 5, 67, 7, 4, 3, 5, 76, 234, 
 
 //Get Authentication Token from discord.
 const redirectToken = (async (req, res) => {
+    
     const { code } = req.query;
 
     const cipherText = crypto.createCipheriv(algo, secKey, invec);
@@ -87,6 +88,7 @@ const refreshToken = (async (req, res) => {
 
 // Get User Information
 const getUser = (async (req, res) => {
+
     let decryptedData;
 
     //try to see if decryption works if not it could be server refresh or malicious intent.
