@@ -44,7 +44,7 @@ app.use(cors({
 
 app.disable('x-powered-by');
 
-app.get("/" , async(req, res) => {
+app.get("/*" , async(req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
