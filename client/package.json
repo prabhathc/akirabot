@@ -8,6 +8,7 @@
     "build": "webpack --mode=production",
     "lint": "npx eslint . --fix"
   },
+  "proxy": "http://localhost:3000",
   "author": "",
   "license": "ISC",
   "dependencies": {

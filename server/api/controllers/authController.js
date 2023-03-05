@@ -28,8 +28,8 @@ const redirectToken = (async (req, res) => {
                 grant_type: 'authorization_code',
                 code,
                 redirect_uri: "http://localhost:3000/api/auth/redirect",
-        
             });
+
             const response = await axios.post("https://discord.com/api/v8/oauth2/token",
             formData.toString(), 
             {
@@ -45,17 +45,18 @@ const redirectToken = (async (req, res) => {
 
             encryptedData += cipherText.final("hex");
 
-            res.cookie('Token', `${encryptedData}`, {maxAge: 360000}, {signed: true});
-            res.cookie('Refresh_Limit', true, {maxAge: 200000}, {signed: true});
-            res.sendStatus(200);
+            res.cookie('__disctkn', `${encryptedData}`, {maxAge: 360000}, {signed: true});
+            
+            //when success redirect to homepage and it will sync with token | frontend handles the rest
+            res.redirect('http://localhost:8080');
 
         } catch (err) {
-
-            console.log(err);
-            res.sendStatus(400);
+            //if something wrong happens it automatically redirects to homepage
+            res.redirect('http://localhost:8080');
         }
     } else {
-        res.sendStatus(400)
+        //if they decline the authorization go back to the homepage
+        res.redirect('http://localhost:8080');
     }
 });
 
@@ -75,13 +76,15 @@ const refreshToken = (async (req, res) => {
                 }
             })
             accessToken = response.data;
+
+            //send the new token to cookie and let frontend know.
             res.send(response.data);
+
         } catch  (err) {
-            console.log(err)
-            res.sendStatus(400)
+            res.status(400).send({message: 'Oops Something went wrong. Please try again later..'})
         }
     } else {
-        res.sendStatus(400)
+        res.status(400).send({message: 'Oops Something went wrong. Please try again later..'})
     }
 });
 
@@ -164,6 +167,16 @@ const userGuild = (async (req, res) => {
     }
 })
 
+const differentErrorMessage  = (status) => {
+    switch(status) {
+        case 200: 
+            res.status(200).send({message: 'Successfully Generated Token'})
+            break;
+        case 401: 
+            res.status(401).send({message: 'Unauthorized access'})
+        
+    }
+}
 
 
 export default { redirectToken, refreshToken, userGuild, getUser }
