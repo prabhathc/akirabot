@@ -38,16 +38,16 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors({
-    origin: 'localhost:3000',
+    origin: 'localhost:8080',
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
 app.disable('x-powered-by');
 
-app.get("/*" , async(req, res) => {
-    res.sendFile(path.join(__dirname, '../client/src/index.html'));
-});
-
 app.use('/api', apiRouter);
+
+// app.get("/*" , async(req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/src/index.html'));
+// });
 
 app.listen(PORT, () => console.log(`App Listening at PORT ${PORT}`));
