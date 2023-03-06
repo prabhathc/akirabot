@@ -1,12 +1,16 @@
 import express from 'express'
-import authController from '../controllers/authController.js'
+import authController from '../components/controllers/authController.js'
+import userDataController from '../components/controllers/userDataController.js'
 
 const router = express.Router()
 
+// Auth Routes for user
 router.get('/auth/redirect', authController.redirectToken);
 router.get('/auth/refresh', authController.refreshToken);
+router.get('/auth/logout', authController.revokeToken);
 
-router.get('/user', authController.getUser);
-router.get('/user/guilds', authController.userGuild);
+// Routes to get information of user
+router.get('/user', userDataController.getUser);
+router.get('/user/guilds', userDataController.userGuild);
 
 export default router;
