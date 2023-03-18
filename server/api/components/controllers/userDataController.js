@@ -24,7 +24,6 @@ const getUser = (async (req, res) => {
         decryptedData += decipherText.final("utf8");
 
     } catch (err) {
-        console.log(err);
         res.status(400).send('Not same token as it was encrypted. Sorry Jackass we are not that dumb');
         return;
     }
