@@ -1,20 +1,23 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Admin from './pages/Admin';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import './index.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import "./index.css";
+import AuthProvider from "./components/AuthProvider";
 
 export default function App() {
   return (
-    <div className="isolate bg-pillred">
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
-      <Footer />
-    </div>
+    <AuthProvider>
+      <div className="isolate bg-pillred">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }

@@ -19,12 +19,13 @@ const getUser = (async (req, res) => {
     try {
         const decipherText = crypto.createDecipheriv(algo, secKey, invec);
 
-        decryptedData = decipherText.update(req.body.AuthToken, "hex", "utf-8");
+        decryptedData = decipherText.update(req.headers['x-authtoken'], "hex", "utf-8");
         
         decryptedData += decipherText.final("utf8");
 
     } catch (err) {
-        res.Status(400).send('Not same token as it was encrypted. Sorry Jackass we are not that dumb');
+        console.log(err);
+        res.status(400).send('Not same token as it was encrypted. Sorry Jackass we are not that dumb');
         return;
     }
 
@@ -40,7 +41,6 @@ const getUser = (async (req, res) => {
                     "Authorization": `${accessToken.token_type} ${accessToken.access_token}`
                 }
             })
-
             res.send(response.data)
 
         } catch (err) {
