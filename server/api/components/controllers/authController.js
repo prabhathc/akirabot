@@ -31,7 +31,7 @@ const redirectToken = (async (req, res) => {
             formData.toString(), 
             {
                 headers: {
-                    "Contet-Type":"application/x-www-form-urlencoded",
+                    "Content-Type":"application/x-www-form-urlencoded",
                     'Accept': 'application/json' 
                 }
             });
