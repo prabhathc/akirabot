@@ -10,13 +10,15 @@ import AuthProvider from "./components/AuthProvider";
 export default function App() {
   return (
     <AuthProvider>
-      <div className="isolate bg-pillred">
+      <div className="isolate bg-pillred min-h-screen flex flex-col">
         <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-        <Footer />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </div>
+        <Footer className="bg-pillwhite fixed bottom-0 w-full" />
       </div>
     </AuthProvider>
   );

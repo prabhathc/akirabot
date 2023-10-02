@@ -59,7 +59,7 @@ const userGuild = (async (req, res) => {
     try {
         const decipherText = crypto.createDecipheriv(algo, secKey, invec);
 
-        decryptedData = decipherText.update(req.body.AuthToken, "hex", "utf-8");
+        decryptedData = decipherText.update(req.headers['x-authtoken'], "hex", "utf-8");
         
         decryptedData += decipherText.final("utf8");
 
@@ -79,7 +79,7 @@ const userGuild = (async (req, res) => {
                 headers: {
                     "Authorization": `${accessToken.token_type} ${accessToken.access_token}` 
                 }
-            })
+            });
             res.send(response.data)
         } catch (err) {
             res.status(401).send({message: err.message})
