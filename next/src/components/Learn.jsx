@@ -45,7 +45,7 @@ export default function Learn() {
       <div className="flex">
         <Tilt className="bg-pillwhite/20 rounded-3xl shadow-lg grow" tiltEnable={width > 768} tiltReverse={true} perspective={2000} glareEnable={false} glareMaxOpacity={0.2} glareBorderRadius="24px" transitionSpeed={1000} gyroscope={true} tiltMaxAngleX={0}>
           <div className="font-bold text-3xl md:text-4xl tracking-tight text-pillwhite p-6">
-            Man wtf do i put here i'm out of stuff u get the point
+            Man wtf do i put here i&apos;m out of stuff u get the point
           </div>
         </Tilt>
       </div>

@@ -1,19 +1,26 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Tilt from "react-parallax-tilt";
+import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import ProtectedRoute from "../components/ProtectedRoute";
 
+const Tilt = dynamic(() => import("react-parallax-tilt"), { ssr: false });
+
 export default function Dashboard() {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(null);
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
+
   useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
+    // Check if we're in the browser before attaching the event listener
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+      window.addEventListener("resize", handleWindowSizeChange);
+
+      return () => {
+        window.removeEventListener("resize", handleWindowSizeChange);
+      };
+    }
   }, []);
 
   return (
@@ -37,7 +44,7 @@ export default function Dashboard() {
               tiltMaxAngleX={0}
             >
               <div className="text-2xl md:text-xl tracking-tight text-pillwhite p-4">
-                Prabhath's Server
+                Prabhath&apos;s Server
               </div>
               <div className="rounded-xl bg-pillgreen/70 text-pillwhite ring-1 ring-pillgreen/10 font-bold tracking-tight text-xl p-4 m-8 hover:ring-pillgreen">
                 Setup
@@ -58,7 +65,7 @@ export default function Dashboard() {
               tiltMaxAngleX={0}
             >
               <div className="text-2xl md:text-xl tracking-tight text-pillwhite p-4">
-                Prabhath's Server
+                Prabhath&apos;s Server
               </div>
             </Tilt>
           </div>
