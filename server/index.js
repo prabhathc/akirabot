@@ -12,12 +12,9 @@ import AWS from 'aws-sdk'
 dotenv.config();
 
 const { Client, Events, GatewayIntentBits } = discord;
-const token = process.env.DISCORD_BOT_TOKEN;
-
+const token = process.env['DISCORD_BOT_TOKEN'];
 const PORT = process.env.PORT || 3000; 
-
 const app = express();
-
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const __filename = fileURLToPath(import.meta.url);
@@ -38,16 +35,12 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors({
-    origin: 'localhost:8080',
+    origin: 'http://localhost:8080',
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
 app.disable('x-powered-by');
 
 app.use('/api', apiRouter);
-
-// app.get("/*" , async(req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/src/index.html'));
-// });
 
 app.listen(PORT, () => console.log(`App Listening at PORT ${PORT}`));

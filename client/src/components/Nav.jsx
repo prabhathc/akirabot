@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import icon from '../assets/icon4.png';
 import { Link } from 'react-router-dom';
+import { useAuth } from './AuthProvider';
 
 export default function Nav() {
-  const url = 'https://discord.com/api/oauth2/authorize?client_id=1061118038402945094&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fredirect&response_type=code&scope=identify%20email%20guilds';
+  const { handleLogin } = useAuth();
+  useEffect(() => {
+    handleLogin();
+  }, []);
+  const url = 'https://discord.com/api/oauth2/authorize?client_id=1061118038402945094&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fredirect&scope=guilds';
   return (
     <div>
       <div className="px-6 py-6 lg:px-8">

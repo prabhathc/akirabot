@@ -1,5 +1,5 @@
 {
-  "name": "soundclouddiscbot",
+  "name": "akira",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,8 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "concurrently": "^7.6.0",
-    "react-parallax-tilt": "^1.7.101"
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

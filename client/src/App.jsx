@@ -10,7 +10,7 @@ import AuthProvider from "./components/AuthProvider";
 export default function App() {
   return (
     <AuthProvider>
-      <div className="isolate bg-pillred">
+      <div className="isolate bg-pillred h-full">
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
