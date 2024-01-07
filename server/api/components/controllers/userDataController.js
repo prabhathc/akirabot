@@ -20,7 +20,7 @@ const getUser = (async (req, res) => {
         const decipherText = crypto.createDecipheriv(algo, secKey, invec);
 
         decryptedData = decipherText.update(req.headers['x-authtoken'], "hex", "utf-8");
-        
+
         decryptedData += decipherText.final("utf8");
 
     } catch (err) {
@@ -33,9 +33,9 @@ const getUser = (async (req, res) => {
         access_token: decryptedData
     }
 
-    if(accessToken.access_token) {
+    if (accessToken.access_token) {
         try {
-            const response = await axios.get("https:discord.com/api/v8/users/@me", {
+            const response = await axios.get("https:discord.com/api/users/@me", {
                 headers: {
                     "Authorization": `${accessToken.token_type} ${accessToken.access_token}`
                 }
@@ -43,49 +43,37 @@ const getUser = (async (req, res) => {
             res.send(response.data)
 
         } catch (err) {
-            res.status(401).send({message: err.message})
+            res.status(420).send({ message: err.message })
         }
     } else {
-        res.status(400).send({message: 'Oops Something went wrong. Please try again later..'})
+        res.status(400).send({ message: 'Oops Something went wrong. Please try again later..' })
     }
 })
 
 //Get Guild/Server Info
 const userGuild = (async (req, res) => {
 
-    let decryptedData;
-
-    //try to see if decryption works if not it could be server refresh or malicious intent.
-    try {
-        const decipherText = crypto.createDecipheriv(algo, secKey, invec);
-
-        decryptedData = decipherText.update(req.body.AuthToken, "hex", "utf-8");
-        
-        decryptedData += decipherText.final("utf8");
-
-    } catch (err) {
-        res.sendStatus(400);
-        return;
-    }
-
+    console.log('hiiii');
+    console.log(req);
     const accessToken = {
         token_type: 'Bearer',
-        access_token: decryptedData
+        access_token: 'Yu2YY70SDASBmgG11yh9PIyX3bao8v'
     }
 
-    if(accessToken.access_token) {
+    if (accessToken.access_token) {
         try {
-            const response = await axios.get("https://discord.com/api/v8/users/@me/guilds" , {
+            const response = await axios.get("https://discord.com/api/users/@me/guilds", {
                 headers: {
-                    "Authorization": `${accessToken.token_type} ${accessToken.access_token}` 
+                    "Authorization": `${accessToken.token_type} ${accessToken.access_token}`
                 }
-            })
+            });
+            console.log(response.data);
             res.send(response.data)
         } catch (err) {
-            res.status(401).send({message: err.message})
+            res.status(420).send({ message: err.message })
         }
     } else {
-        res.status(400).send({message: 'Oops Something went wrong. Please try again later..'})
+        res.status(400).send({ message: 'Oops Something went wrong. Please try again later..' })
     }
 })
 
