@@ -33,8 +33,9 @@ export default function AuthProvider({ children }) {
   };
 
   const handleLogout = () => {
+    deleteCookie("__disctkn");
     setToken(null);
-    navigate("/"); // Optionally navigate to a different route on logout
+    navigate("/");
   };
 
   const sendRequest = async (url, method, data) => {
@@ -53,6 +54,10 @@ export default function AuthProvider({ children }) {
       throw error;
     }
   };
+
+  function deleteCookie(name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }
 
   const value = {
     token,
