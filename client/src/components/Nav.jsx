@@ -1,14 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import icon from '../assets/icon4.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthProvider';
 
 export default function Nav() {
-  const { handleLogin } = useAuth();
+  const { token, handleLogout } = useAuth();
+  const navigate = useNavigate();
+  const [loginState, setLoginState] = useState(false);
+
   useEffect(() => {
-    handleLogin();
-  }, []);
-  const url = 'https://discord.com/api/oauth2/authorize?client_id=1061118038402945094&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fredirect&scope=guilds';
+    setLoginState(!!token);
+  }, [token]);
+
+  const handleButtonClick = () => {
+    if (loginState) {
+      handleLogout();
+    } else {
+      // Redirect to login URL
+      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1061118038402945094&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fredirect&scope=guilds';
+    }
+  };
+
   return (
     <div>
       <div className="px-6 py-6 lg:px-8">
@@ -20,12 +32,12 @@ export default function Nav() {
               </Link>
             </div>
             <div className="lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
-              <a
-                href={url}
-                className="inline-block rounded-lg px-4 py-2 text-lg font-semibold leading-7 bg-pillwhite/20 text-pillwhite  shadow-sm ring-1 ring-pillwhite/20 hover:ring-pillwhite duration-300"
+              <button
+                onClick={handleButtonClick}
+                className="inline-block rounded-lg px-4 py-2 text-lg font-semibold leading-7 bg-pillwhite/20 text-pillwhite shadow-sm ring-1 ring-pillwhite/20 hover:ring-pillwhite duration-300"
               >
-                Login
-              </a>
+                {loginState ? 'Logout' : 'Login'}
+              </button>
             </div>
           </nav>
       </div>
