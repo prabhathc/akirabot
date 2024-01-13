@@ -18,19 +18,27 @@ export default function Dashboard() {
       try {
         const data = await sendRequest("http://localhost:3000/api/user/guilds", "GET");
         setGuilds(data.filter((guild) => guild.owner));
-        console.log(guilds);
       } catch (err) {
         console.error('Error fetching guilds:', err);
       }
     };
-
     fetchGuilds();
 
     window.addEventListener("resize", handleWindowSizeChange);
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
-  }, [sendRequest]);
+  }, []);
+
+  useEffect(() => {
+    const fetchGuildMembers = async () => {
+      guilds.forEach(async (guild) => {
+        const members = await sendRequest(`http://localhost:3000/api/user/guild_members/${guild.id}`, "GET");
+        console.log(members);
+      });
+    }
+    fetchGuildMembers();
+  }, [guilds]);
 
   return (
     <ProtectedRoute>
@@ -54,11 +62,14 @@ export default function Dashboard() {
                 tiltMaxAngleX={0}
               >
                 <div className="text-2xl md:text-xl tracking-tight text-pillwhite p-4">
-                  {guild.name} {/* Display guild name */}
+                  {guild.name}
                 </div>
-                <div className="rounded-xl bg-pillgreen/70 text-pillwhite ring-1 ring-pillgreen/10 font-bold tracking-tight text-xl p-4 m-8 hover:ring-pillgreen">
+                <a
+                  href="https://discord.com/oauth2/authorize?client_id=1061118038402945094&scope=bot"
+                  className="inline-block bg-pillred/70 rounded-xl text-pillwhite ring-1 ring-pillgreen/10 font-bold tracking-tight text-xl p-4 m-8 hover:ring-pillred transition-all duration-300 ease-in-out transform"
+                >
                   Setup
-                </div>
+                </a>
               </Tilt>
             </div>
           ))}

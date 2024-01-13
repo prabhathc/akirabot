@@ -25,7 +25,7 @@ const redirectToken = (async (req, res) => {
                     'Accept': 'application/json' 
                 }
             });
-            res.cookie('__disctkn', `${response.data.access_token}`, {maxAge: 360000}, {signed: true});
+            res.cookie('__disctkn', `${response.data.access_token}`, {maxAge: 360000}, {signed: true}, {httpOnly: true});
 
         } catch (err) {
             console.log(err.response || err.message)

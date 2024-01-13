@@ -12,5 +12,6 @@ router.get('/auth/logout', authController.revokeToken);
 // Routes to get information of user
 router.get('/user', userDataController.getUser);
 router.get('/user/guilds', userDataController.userGuild);
+router.get('/user/guild_members/:id', userDataController.userGuildMembers);
 
 export default router;
