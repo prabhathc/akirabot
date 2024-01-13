@@ -17,7 +17,7 @@ export default function AuthProvider({ children }) {
     if (token) {
       navigate("/dashboard");
     }
-  }, [token, navigate]);
+  }, [token]);
 
   const handleLogin = async () => {
     const cookies = document.cookie.split(";");

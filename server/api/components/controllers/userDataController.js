@@ -48,16 +48,14 @@ const getUser = (async (req, res) => {
     } else {
         res.status(400).send({ message: 'Oops Something went wrong. Please try again later..' })
     }
-})
+});
 
 //Get Guild/Server Info
 const userGuild = (async (req, res) => {
-
-    console.log('hiiii');
-    console.log(req);
+    let token = req.headers.authorization.split(' ')[1];
     const accessToken = {
         token_type: 'Bearer',
-        access_token: 'Yu2YY70SDASBmgG11yh9PIyX3bao8v'
+        access_token: token,
     }
 
     if (accessToken.access_token) {
@@ -67,7 +65,6 @@ const userGuild = (async (req, res) => {
                     "Authorization": `${accessToken.token_type} ${accessToken.access_token}`
                 }
             });
-            console.log(response.data);
             res.send(response.data)
         } catch (err) {
             res.status(420).send({ message: err.message })
@@ -75,6 +72,28 @@ const userGuild = (async (req, res) => {
     } else {
         res.status(400).send({ message: 'Oops Something went wrong. Please try again later..' })
     }
-})
+});
 
-export default { userGuild, getUser }
+const userGuildMembers = (async (req, res) => {
+    let token = req.headers.authorization.split(' ')[1];
+    const accessToken = {
+        token_type: 'Bearer',
+        access_token: token,
+    }
+
+    if (accessToken.access_token) {
+        try {
+            const response = await axios.get(`https://discord.com/api/guilds/${req.params.id}/members`, {
+                headers: {
+                    "Authorization": `${accessToken.token_type} ${accessToken.access_token}`
+                }
+            });
+            res.send(response.data)
+        } catch (err) {
+            console.log('error getting members data: ', err.code);
+            res.status(420).send({ message: err.message })
+        }
+    }
+});
+
+export default { userGuild, getUser, userGuildMembers }
